@@ -1,9 +1,200 @@
 $icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-$background: white;
+$darkblue: #2C3E50;
+$medblue: #2980B9;
+$ltblue: #3498DB;
+$off-white: #ECF0F1;
+$red: #E74C3C;
+$footer-height: 40px;
+$source-padding-full: 0.5em;
+$source-padding-half: $source-padding-full / 2;
 
-body {
-  background: $background;
-  font-family: "Helvetica Neue", serif;
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+.form-wrapper h4 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+h3 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+}
+a:hover {
+  text-decoration: none;
+}
+.content-container {
+  margin-top: 50px;
+}
+header, footer {
+  color: $off-white;
+}
+.navbar {
+  background: $darkblue;
+  .navbar-brand, .navbar-brand:focus, .navbar-nav li a, a {
+    color: $off-white;
+    outline: none;
+  }
+  .navbar-toggle .icon-bar {
+    background-color: $off-white;
+  }
+  .navbar-brand, li>a {
+    text-shadow: none;
+  }
+  .navbar-brand {
+    font-size: 2em;
+  }
+  .navbar-brand:hover, .navbar-nav li a:hover, .navbar-nav > .active > a, .navbar-nav > .active > a:focus {
+    background: $darkblue;
+    color: #CCC;
+    outline: none;
+  }
+}
+.navbar-fixed-top {
+  border: none;
+}
+.site-title {
+  background: $darkblue;
+}
+.page-title {
+  background: $medblue;
+}
+.site-title {
+  h1, p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 1em;
+  }
+}
+.page-title h2 {
+  margin-top: 10px;
+  font-size: 1.5em;
+  color: #FFF;
+}
+.alert.alert-top {
+  margin-top: 1em;
+}
+.category-title {
+  background: #EFEFEF;
+}
+.source-title {
+  background: $off-white;
+}
+.article-list {
+  article {
+    border-bottom: 1px solid $off-white;
+  }
+  h4 small {
+    white-space: nowrap;
+  }
+}
+.news-source.right-source {
+  padding-right: $source-padding-full;
+  padding-left: $source-padding-half;
+}
+.news-source:last-child {
+  margin-bottom: $source-padding-full;
+}
+.news-source {
+  position: relative;
+  padding: $source-padding-full $source-padding-half 0 $source-padding-full;
+  float: left;
+  img {
+    width: 100%;
+    border: 1px solid $darkblue;
+    border-radius: 3px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+  img:hover {
+    cursor: pointer;
+  }
+  .checked-image {
+    border-color: $ltblue;
+  }
+  input[type="checkbox"] {
+    display: none;
+  }
+  i {
+    position: absolute;
+    bottom: $source-padding-half;
+    right: $source-padding-full;
+    font-size: 1.5em;
+    color: #777;
+  }
+  i.fa-check-circle-o {
+    color: $ltblue;
+  }
+}
+.right-source i {
+  right: $source-padding-full * 1.25;
+}
+.form-wrapper {
+  margin-top: 1.5em;
+}
+.submit-form {
+  margin-top: 0.75em;
+}
+.main {
+  margin-bottom: $footer-height + 10;
+  .lead:first-child {
+    margin-top: 1em;
+  }
+}
+.row-buffer {
+  margin-top: 2em;
+}
+.hypnotized {
+  width: 100%;
+}
+footer.row {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: $footer-height;
+  width: 100%;
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: $medblue;
+}
+.overlay-outer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+}
+.overlay-inner {
+  width: 300px;
+  height: 230px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -115px;
+  background: white;
+  padding: 0 20px;
+  border-radius: 5px;
+  .fa-times-circle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 30px;
+    margin-top: -15px;
+    margin-right: -10px;
+    color: black;
+    cursor: pointer;
+  }
+}
+@media (min-width: 768px) {
+  .news-source, .news-source.right-source {
+    padding-right: $source-padding-full;
+    padding-left: $source-padding-half;
+  }
 }

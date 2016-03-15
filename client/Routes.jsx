@@ -10,8 +10,8 @@ export default class Routes extends Component {
     return(
       <Router history={browserHistory}>
         <Route path="/" component={Layout}>
-          <IndexRoute component={Home} />
-          <Route path="/about" component={About} />
+          <IndexRoute component={Home} pageTitle="News Feed" />
+          <Route path="about" component={About} pageTitle="About" />
         </Route>
       </Router>
     );
