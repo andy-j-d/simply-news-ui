@@ -28,8 +28,6 @@ export default class Home extends Component {
 
     const { newsSources } = this.state;
 
-    console.warn('newsSources', newsSources);
-
     const sources = newsSources.map((source) => {
       return <NewsSource {...source} key={source.id} />
     });

@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 
-import { Col } from 'react-bootstrap';
+import { Row, Col, Jumbotron } from 'react-bootstrap';
 
 export default class About extends Component {
 
   render() {
+
+    const style = {
+      margin: '0 -15px',
+      borderRadius: 0
+    };
+
     return(
-      <Col>
-        <p>
-          This is about.
-        </p>
-      </Col>
+      <Row>
+        <Col xs={12}>
+          <Jumbotron fluid style={style}>
+            <h3>Read the news!</h3>
+          </Jumbotron>
+        </Col>
+      </Row>
     );
   }
 
