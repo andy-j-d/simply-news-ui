@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import { Row, Col, Glyphicon } from 'react-bootstrap';
 
+import ArticleList from './ArticleList';
+
+import '../styles/animations.css';
+
 export default class NewsSource extends Component {
 
   getArticles(url, qty) {
@@ -39,7 +43,7 @@ export default class NewsSource extends Component {
 
   }
 
-  handleClickMore() {
+  showMore() {
     this.setState({
       more: true
     });
@@ -60,47 +64,9 @@ export default class NewsSource extends Component {
 
     const { articles, more, expanded } = this.state;
 
-    let toggleButton;
+    const toggleButton = expanded ? 'chevron-up' : 'chevron-down';
 
-    expanded ? toggleButton = 'chevron-up' : toggleButton = 'chevron-down';
-
-    const articleList = articles.map((article, index) => {
-
-      let description;
-
-      if (article.description) { description = article.description.replace(/<\/?[^>]+(>|$)/g, ""); }
-
-      return(
-        <article key={index}>
-          <h4>
-            <a href={article.link} target="_blank">{article.title}</a> &nbsp;
-            <small>{article.display_date}</small>
-          </h4>
-          <p>{description}</p>
-        </article>
-      );
-    });
-
-    let displayArticles;
-
-    let style = { borderBottom: '1px solid #CCC' };
-
-    if(expanded) {
-      displayArticles = (
-        <div>
-          <Col xs={12} className="article-list">
-            {articleList}
-          </Col>
-          { !more ?
-            <Col xs={12}>
-              <h4 onClick={::this.handleClickMore} className="clickable">More from {name}</h4>
-            </Col>
-            : null
-          }
-        </div>
-      );
-      style = null;
-    }
+    const style = expanded ? null : { borderBottom: '1px solid #CCC' };
 
     return(
       <section>
@@ -108,10 +74,11 @@ export default class NewsSource extends Component {
           <Col xs={12} className="source-title">
             <h3>{name} <Glyphicon glyph={toggleButton} className="pull-right clickable" onClick={::this.handleClickExpand} /></h3>
           </Col>
-          {displayArticles}
+          {expanded && <ArticleList name={name} articles={articles} more={more} expanded={expanded} showMore={::this.showMore} />}
         </Row>
       </section>
-    )
+    );
+
   }
 
 }
