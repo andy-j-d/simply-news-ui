@@ -43,11 +43,15 @@ export default class NewsSource extends Component {
 
   }
 
-  showMore() {
-    this.setState({
-      more: true
+  toggleMore() {
+    if (this.state.articles.length <= 3) {
+      this.getArticles(this.state.articleUrl, 20);
+    }
+    this.setState((previousState) => {
+      return {
+        more: !previousState.more
+      };
     });
-    this.getArticles(this.state.articleUrl, 20);
   };
 
   handleClickExpand() {
@@ -74,7 +78,7 @@ export default class NewsSource extends Component {
           <Col xs={12} className="source-title">
             <h3>{name} <Glyphicon glyph={toggleButton} className="pull-right clickable" onClick={::this.handleClickExpand} /></h3>
           </Col>
-          {expanded && <ArticleList name={name} articles={articles} more={more} expanded={expanded} showMore={::this.showMore} />}
+          {expanded && <ArticleList name={name} articles={articles} more={more} expanded={expanded} toggleMore={::this.toggleMore} />}
         </Row>
       </section>
     );

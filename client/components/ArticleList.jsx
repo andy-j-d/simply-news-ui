@@ -6,7 +6,9 @@ import Animate from 'react-animate-on-change';
 
 import Article from './Article';
 
-const ArticleList = ({articles, more, expanded, name, showMore}) => {
+const ArticleList = ({articles, more, expanded, name, toggleMore}) => {
+
+  articles = more ? articles : articles.slice(0, 3);
 
   const articleList = articles && articles.map((article, index) => <Article {...article} key={index} />);
 
@@ -17,12 +19,9 @@ const ArticleList = ({articles, more, expanded, name, showMore}) => {
           {articleList}
         </Animate>
       </Col>
-      { !more ?
-        <Col xs={12}>
-          <h4 onClick={showMore} className="clickable">More from {name}</h4>
-        </Col>
-        : null
-      }
+      <Col xs={12}>
+        <h4 onClick={toggleMore} className="clickable">{more ? 'Less' : 'More'} from {name}</h4>
+      </Col>
     </div>
   );
 
