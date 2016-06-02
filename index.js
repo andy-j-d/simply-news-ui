@@ -17,6 +17,7 @@ app.set('views', path.join(process.cwd(), '/server/views'));
 app.use(compress());
 app.use(layouts);
 app.use('/client', express.static(path.join(process.cwd(), '/client')));
+app.use('/api', require('./server/api/routes'));
 
 app.disable('x-powered-by');
 
@@ -38,7 +39,7 @@ app.get('/*', function(req, res) {
 
 var port = Number(process.env.PORT || 3001);
 app.listen(port, function () {
-  console.log('server running at localhost:3001, go refresh and see magic');
+  console.log('server running at localhost:' + port);
 });
 
 if (env.production === false) {
