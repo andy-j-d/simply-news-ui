@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import NewsSource from './NewsSource';
 
+import { apiURL } from '../util';
+
 export default class Home extends Component {
 
   constructor() {
@@ -10,7 +12,7 @@ export default class Home extends Component {
       newsSources: []
     };
 
-    fetch('http://localhost:9292/deliver_feed', {
+    fetch(`${apiURL}/deliver_feed`, {
       method: 'get'
     }).then((response) => {
       response.json().then((data) => {

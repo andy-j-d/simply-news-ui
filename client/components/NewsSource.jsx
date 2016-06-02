@@ -4,6 +4,8 @@ import { Row, Col, Glyphicon } from 'react-bootstrap';
 
 import ArticleList from './ArticleList';
 
+import { apiURL } from '../util';
+
 import '../styles/animations.css';
 
 export default class NewsSource extends Component {
@@ -36,7 +38,7 @@ export default class NewsSource extends Component {
       articles: [],
       more: false,
       expanded: true,
-      articleUrl: `http://localhost:9292/deliver_articles/?rss_url=${props.rss_url}`
+      articleUrl: `${apiURL}/deliver_articles/?rss_url=${props.rss_url}`
     };
 
     this.getArticles(this.state.articleUrl, 2);
