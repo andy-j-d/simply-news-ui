@@ -45,6 +45,9 @@ module.exports = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
       __CURRENT_ENV__: '\'' + (NODE_ENV) + '\''
+    }),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
   ],
 
