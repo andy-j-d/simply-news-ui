@@ -7,13 +7,6 @@ const feed = [
     image_url: "ars-technica.png"
   },
   {
-    id: 31,
-    name: "Ask Men",
-    rss_url: "http://www.askmen.com/homepage.xml",
-    homepage_url: "http://www.askmen.com/",
-    image_url: "ask-men.png"
-  },
-  {
     id: 5,
     name: "BBC",
     rss_url: "http://feeds.bbci.co.uk/news/rss.xml",
@@ -256,5 +249,12 @@ const unused = [
     rss_url: "http://feeds.feedburner.com/thr/news",
     homepage_url: "http://www.hollywoodreporter.com/",
     image_url: "hollywood-reporter.png"
+  },
+  {
+    id: 31,
+    name: "Ask Men",
+    rss_url: "http://www.askmen.com/homepage.xml",
+    homepage_url: "http://www.askmen.com/",
+    image_url: "ask-men.png"
   },
 ];
