@@ -1,18 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var feed = require('./feed');
+const express = require('express');
+const { home, feed } = require('./ApiController');
+let router = express.Router();
 
-var sendJSONresponse = function(res, status, content) {
-  res.status(status);
-  res.json(content);
-};
+router.get('/', home);
 
-router.get('/', function(req, res, next) {
-  sendJSONresponse(res, 200, { message: 'Simply News API' });
-});
-
-router.get('/feed', function(req, res, next) {
-  sendJSONresponse(res, 200, feed);
-});
+router.get('/feed', feed);
 
 module.exports = router;

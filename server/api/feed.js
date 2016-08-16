@@ -1,4 +1,4 @@
-var feed = [
+const feed = [
   {
     id: 3,
     name: "Ars Technica",
