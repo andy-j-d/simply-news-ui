@@ -35,13 +35,6 @@ const feed = [
     image_url: "cnn.jpg"
   },
   {
-    id: 35,
-    name: "Cosmpolitan",
-    rss_url: "http://www.cosmopolitan.com/rss/all.xml",
-    homepage_url: "http://www.cosmopolitan.com/",
-    image_url: "cosmopolitan.png"
-  },
-  {
     id: 9,
     name: "ESPN",
     rss_url: "http://sports.espn.go.com/espn/rss/news",
@@ -49,32 +42,11 @@ const feed = [
     image_url: "espn.png"
   },
   {
-    id: 15,
-    name: "Elle",
-    rss_url: "http://www.elle.com/rss/all.xml",
-    homepage_url: "http://www.elle.com/",
-    image_url: "elle.png"
-  },
-  {
     id: 21,
     name: "Entertainment Tonight",
     rss_url: "http://feeds.feedburner.com/EtsBreakingNews",
     homepage_url: "http://www.etonline.com/news/",
     image_url: "etonline.png"
-  },
-  {
-    id: 30,
-    name: "Esquire",
-    rss_url: "http://www.esquire.com/rss/all.xml",
-    homepage_url: "http://www.esquire.com/",
-    image_url: "esquire.png"
-  },
-  {
-    id: 11,
-    name: "Financial Times",
-    rss_url: "http://www.ft.com/rss/home/us",
-    homepage_url: "http://www.ft.com/home/us",
-    image_url: "financial-times.png"
   },
   {
     id: 26,
@@ -254,3 +226,35 @@ const feed = [
 ];
 
 module.exports = feed;
+
+// feed-read can't figure these out
+const unused = [
+  {
+    id: 35,
+    name: "Cosmpolitan",
+    rss_url: "http://www.cosmopolitan.com/rss/all.xml",
+    homepage_url: "http://www.cosmopolitan.com/",
+    image_url: "cosmopolitan.png"
+  },
+  {
+    id: 15,
+    name: "Elle",
+    rss_url: "http://www.elle.com/rss/all.xml",
+    homepage_url: "http://www.elle.com/",
+    image_url: "elle.png"
+  },
+  {
+    id: 30,
+    name: "Esquire",
+    rss_url: "http://www.esquire.com/rss/all.xml",
+    homepage_url: "http://www.esquire.com/",
+    image_url: "esquire.png"
+  },
+  {
+    id: 11,
+    name: "Financial Times",
+    rss_url: "http://www.ft.com/rss/home/us",
+    homepage_url: "http://www.ft.com/home/us",
+    image_url: "financial-times.png"
+  },
+];

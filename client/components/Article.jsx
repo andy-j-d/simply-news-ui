@@ -1,16 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const scrubText = (text) => text && text.replace(/(<\/?[^>]+(>|$))|(&(.*?);)/g, "");
+import moment from 'moment';
+import { trim, truncate } from 'lodash';
 
-const Article = ({link, description, title, display_date}) => {
+const scrubText = (text) => text ? text.replace(/(<\/?[^>]+(>|$))|(&(.*?);)/g, "") : '';
+
+const formatDate = (date) => date && moment(date).fromNow();
+
+const Article = ({ link, content, title, published }) => {
+
+  const description = truncate(trim(scrubText(content)), {
+    'length': 500,
+    'separator': ' '
+  });
 
   return(
     <article>
       <h4>
         <a href={link} target="_blank">{scrubText(title)}</a> &nbsp;
-        <small>{display_date}</small>
+        <small>{formatDate(published)}</small>
       </h4>
-      <p>{scrubText(description)}</p>
+      <p>{description}</p>
     </article>
   );
 };
