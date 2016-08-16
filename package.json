@@ -23,6 +23,7 @@
   "license": "MIT",
   "homepage": "",
   "dependencies": {
+    "assets-webpack-plugin": "^3.2.0",
     "babel-polyfill": "6.3.14",
     "babel-runtime": "6.3.19",
     "compression": "1.6.1",
@@ -36,7 +37,6 @@
     "webpack": "1.12.12"
   },
   "devDependencies": {
-    "assets-webpack-plugin": "3.2.0",
     "autoprefixer-loader": "3.2.0",
     "babel-core": "6.4.5",
     "babel-jest": "6.0.1",
