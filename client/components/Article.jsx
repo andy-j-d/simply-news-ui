@@ -14,13 +14,15 @@ const Article = ({ link, content, title, published }) => {
     'separator': ' '
   });
 
+  const realDescription = description.split(' ').length > 1;
+
   return(
     <article>
       <h4>
         <a href={link} target="_blank">{scrubText(title)}</a> &nbsp;
         <small>{formatDate(published)}</small>
       </h4>
-      <p>{description}</p>
+      {realDescription && <p>{description}</p>}
     </article>
   );
 };
