@@ -77,13 +77,6 @@ const feed = [
     image_url: "hacker-news.png"
   },
   {
-    id: 17,
-    name: "Hollywood Reporter",
-    rss_url: "http://feeds.feedburner.com/thr/news",
-    homepage_url: "http://www.hollywoodreporter.com/",
-    image_url: "hollywood-reporter.png"
-  },
-  {
     id: 4,
     name: "Los Angeles Times",
     rss_url: "http://www.latimes.com/rss2.0.xml",
@@ -256,5 +249,12 @@ const unused = [
     rss_url: "http://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU",
     homepage_url: "http://www.foxsports.com/",
     image_url: "fox-sports.jpg"
+  },
+  {
+    id: 17,
+    name: "Hollywood Reporter",
+    rss_url: "http://feeds.feedburner.com/thr/news",
+    homepage_url: "http://www.hollywoodreporter.com/",
+    image_url: "hollywood-reporter.png"
   },
 ];
