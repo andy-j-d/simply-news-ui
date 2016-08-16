@@ -12,7 +12,7 @@ export default class Home extends Component {
       newsSources: []
     };
 
-    fetch(`${apiURL}/deliver_feed`, {
+    fetch(`${apiURL}/feed`, {
       method: 'get'
     }).then((response) => {
       response.json().then((data) => {
@@ -20,7 +20,6 @@ export default class Home extends Component {
           newsSources: data
         });
       })
-
     }).catch((error) => {
       console.warn('deliver articles error', error);
     });
@@ -28,15 +27,9 @@ export default class Home extends Component {
 
   render() {
 
-    const { newsSources } = this.state;
-
-    const sources = newsSources.map((source) => {
-      return <NewsSource {...source} key={source.id} />
-    });
-
     return(
       <div>
-        { sources }
+        {this.state.newsSources.map((source) => <NewsSource {...source} key={source.id} />)}
       </div>
     );
 

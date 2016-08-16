@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 
 import { Col } from 'react-bootstrap';
 
-import Animate from 'react-animate-on-change';
-
 import Article from './Article';
 
-const ArticleList = ({articles, more, expanded, name, toggleMore}) => {
+const ArticleList = ({ articles, more, expanded, name, toggleMore }) => {
 
   articles = more ? articles : articles.slice(0, 3);
 
@@ -15,9 +13,7 @@ const ArticleList = ({articles, more, expanded, name, toggleMore}) => {
   return (
     <div>
       <Col xs={12} className="article-list">
-        <Animate baseClassName="example-enter" animationClassName="example-enter-active" animate={expanded}>
-          {articleList}
-        </Animate>
+        {articleList}
       </Col>
       <Col xs={12}>
         <h4 onClick={toggleMore} className="clickable">{more ? 'Less' : 'More'} from {name}</h4>
