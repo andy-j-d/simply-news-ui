@@ -56,13 +56,6 @@ const feed = [
     image_url: "fox-news.jpg"
   },
   {
-    id: 33,
-    name: "Fox Sports",
-    rss_url: "http://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU",
-    homepage_url: "http://www.foxsports.com/",
-    image_url: "fox-sports.jpg"
-  },
-  {
     id: 29,
     name: "GQ",
     rss_url: "http://www.gq.com/rss",
@@ -256,5 +249,12 @@ const unused = [
     rss_url: "http://www.ft.com/rss/home/us",
     homepage_url: "http://www.ft.com/home/us",
     image_url: "financial-times.png"
+  },
+  { // this one throws an error for an unexpected ;
+    id: 33,
+    name: "Fox Sports",
+    rss_url: "http://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU",
+    homepage_url: "http://www.foxsports.com/",
+    image_url: "fox-sports.jpg"
   },
 ];
