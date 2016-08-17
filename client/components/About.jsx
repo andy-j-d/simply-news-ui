@@ -12,7 +12,7 @@ const About = () => {
   return(
     <Row>
       <Col xs={12}>
-        <Jumbotron fluid style={style}>
+        <Jumbotron style={style}>
           <h3>
             Simply read the news. <small>Top headlines from some of the world's top news sources.</small>
           </h3>

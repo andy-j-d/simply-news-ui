@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 import { Grid, Row, Col, Navbar, Nav, NavItem } from 'react-bootstrap';
 
-import { LinkContainer } from 'react-router-bootstrap';
+import { Link, browserHistory } from 'react-router';
+
+const onClickLink = (link) => browserHistory.push(link);
 
 export default class Layout extends Component {
   render() {
@@ -10,14 +12,14 @@ export default class Layout extends Component {
       <div>
         <Navbar fixedTop fluid>
           <Navbar.Header>
-            <Navbar.Brand>
-              <LinkContainer to="/"><a>Simply News</a></LinkContainer>
+            <Navbar.Brand onClick={() => onClickLink('/')}>
+              Simply News
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <LinkContainer to="/about"><NavItem>About</NavItem></LinkContainer>
+              <NavItem onClick={() => onClickLink('/about')}>About</NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
