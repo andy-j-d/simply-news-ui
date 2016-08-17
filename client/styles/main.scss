@@ -10,6 +10,10 @@ $footer-height: 40px;
 $source-padding-full: 0.5em;
 $source-padding-half: $source-padding-full / 2;
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
