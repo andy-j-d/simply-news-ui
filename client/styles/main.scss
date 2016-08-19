@@ -30,7 +30,7 @@ a:hover {
   text-decoration: none;
 }
 .content-container {
-  margin-top: 50px;
+  margin-top: 94px;
 }
 header, footer {
   color: $off-white;
@@ -64,6 +64,24 @@ header, footer {
 }
 .page-title {
   background: $medblue;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  z-index: 100;
+  h2 {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: #FFF;
+    .refresh-button {
+      margin-top: 0.2em;
+      font-size: 0.75em;
+    }
+    small {
+      color: #FFF;
+    }
+  }
 }
 .site-title {
   h1, p {
@@ -71,11 +89,6 @@ header, footer {
     margin-bottom: 20px;
     line-height: 1em;
   }
-}
-.page-title h2 {
-  margin-top: 10px;
-  font-size: 1.5em;
-  color: #FFF;
 }
 .alert.alert-top {
   margin-top: 1em;

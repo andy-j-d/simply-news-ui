@@ -18,19 +18,29 @@ export default class NewsSource extends Component {
       expanded: true
     };
     this.articleUrl = `${apiURL}/articles/?url=${props.rss_url}`;
+    this.toggleMore = ::this.toggleMore
   }
 
   componentWillMount() {
-    this.getArticles(this.articleUrl, 2);
+    this.getArticles();
   }
 
-  getArticles(url, qty) {
-
-    if(qty) {
-      url = `${url}&qty=${qty}`;
+  componentWillReceiveProps({ refresh }) {
+    if (refresh !== this.props.refresh) {
+      this.setState({
+        fetching: true
+      });
+      this.getArticles().then(()=> this.setState({
+        fetching: false
+      }));
     }
+  }
 
-    fetch(url, {
+  getArticles(qty) {
+
+    const url = `${this.articleUrl}${qty ? `&qty=${qty}` : ''}`;
+
+    return fetch(url, {
       method: 'get'
     }).then((response) => {
       response.json().then((data) => {
@@ -65,11 +75,11 @@ export default class NewsSource extends Component {
 
   render() {
 
-    const { articles, more, expanded } = this.state;
+    const { articles, more, expanded, fetching } = this.state;
 
     if (articles.length === 0) return null;
 
-    const toggleButton = expanded ? 'chevron-up' : 'chevron-down';
+    const toggleButton = fetching ? 'refresh' : (expanded ? 'chevron-up' : 'chevron-down');
     const style = expanded ? null : { borderBottom: '1px solid #CCC' };
 
     return(
@@ -82,7 +92,7 @@ export default class NewsSource extends Component {
             </h3>
           </Col>
           {expanded && <ArticleList name={this.props.name} articles={articles} more={more} expanded={expanded}
-                                    toggleMore={::this.toggleMore} />}
+                                    toggleMore={this.toggleMore} />}
         </Row>
       </section>
     );

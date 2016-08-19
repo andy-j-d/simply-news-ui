@@ -29,7 +29,9 @@ export default class Home extends Component {
 
     return(
       <div>
-        {this.state.newsSources.map((source) => <NewsSource {...source} key={source.id} />)}
+        {this.state.newsSources.map(source => (
+          <NewsSource {...source} key={source.id} refresh={this.props.refresh} />
+        ))}
       </div>
     );
 
