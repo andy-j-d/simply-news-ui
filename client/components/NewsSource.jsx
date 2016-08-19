@@ -66,6 +66,9 @@ export default class NewsSource extends Component {
   render() {
 
     const { articles, more, expanded } = this.state;
+
+    if (articles.length === 0) return null;
+
     const toggleButton = expanded ? 'chevron-up' : 'chevron-down';
     const style = expanded ? null : { borderBottom: '1px solid #CCC' };
 
