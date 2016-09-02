@@ -9,28 +9,20 @@ const sortByName = array => array.sort((a, b) => {
   return 0;
 });
 
-const findIndexById = (array, id) => array.indexOf(({ id: itemId }) => id === itemId);
-
-const toggleAttribute = (array, index, attribute) => ([
-  ...array.slice(0, index),
-  {
-    ...array[index],
-    [attribute]: !array[index][attribute]
-  },
-  ...array.slice(index + 1)
-]);
+const toggleAttribute = (array, id, attribute) => array.map(source => source.id === id ? {
+    ...source,
+    [attribute]: !source[attribute]
+  } : source);
 
 const feed = (state = sortByName(feedData), { type, id }) => {
-
-  const sourceIndex = id && findIndexById(state, id);
 
   switch (type) {
 
     case TOGGLE_EXPANDED:
-      return toggleAttribute(state, sourceIndex, 'expanded');
+      return toggleAttribute(state, id, 'expanded');
 
     case TOGGLE_MORE:
-      return toggleAttribute(state, sourceIndex, 'more');
+      return toggleAttribute(state, id, 'more');
 
     default: return state;
   }
