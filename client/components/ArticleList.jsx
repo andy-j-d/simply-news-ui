@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import { Col } from 'react-bootstrap';
 
 import Article from './Article';
 
-const ArticleList = ({ articles, more, expanded, name, toggleMore }) => {
+const ArticleList = ({ articles, more, name, toggleMore }) => {
 
   articles = more ? articles : articles.slice(0, 3);
 

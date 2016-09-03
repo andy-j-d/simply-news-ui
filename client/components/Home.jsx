@@ -1,40 +1,29 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
+import { requestAllArticles } from '../actions';
+
 import NewsSource from './NewsSource';
 
 import { apiURL } from '../util';
 
-export default class Home extends Component {
+class Home extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      newsSources: []
-    };
-
-    fetch(`${apiURL}/feed`, {
-      method: 'get'
-    }).then((response) => {
-      response.json().then((data) => {
-        this.setState({
-          newsSources: data
-        });
-      })
-    }).catch((error) => {
-      console.warn('deliver articles error', error);
-    });
+  componentWillMount() {
+    this.props.requestAllArticles();
   }
 
   render() {
-
     return(
       <div>
-        {this.state.newsSources.map(source => (
-          <NewsSource {...source} key={source.id} refresh={this.props.refresh} />
+        {this.props.feed.map(source => (
+          <NewsSource {...source} key={source.id} />
         ))}
       </div>
     );
-
   }
 
-};
+}
+
+export default connect(({ feed }) => ({ feed }), { requestAllArticles })(Home);

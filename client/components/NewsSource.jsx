@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+import { connect } from 'react-redux';
+
+import { toggleExpanded, toggleMore, getArticlesRequest } from '../actions';
+
 import { Row, Col, Glyphicon } from 'react-bootstrap';
 
 import ArticleList from './ArticleList';
@@ -8,95 +12,43 @@ import { apiURL } from '../util';
 
 import '../styles/animations.css';
 
-export default class NewsSource extends Component {
+const NewsSource = ({ more, expanded, name, id, toggleMore, toggleExpanded, articles, fetching }) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: [],
-      more: false,
-      expanded: true
-    };
-    this.articleUrl = `${apiURL}/articles/?url=${props.rss_url}`;
-    this.toggleMore = ::this.toggleMore
-  }
+  if (articles.length === 0) return null;
 
-  componentWillMount() {
-    this.getArticles();
-  }
+  const toggleButton = fetching ? 'refresh' : (expanded ? 'chevron-up' : 'chevron-down');
+  const style = expanded ? null : { borderBottom: '1px solid #CCC' };
 
-  componentWillReceiveProps({ refresh }) {
-    if (refresh !== this.props.refresh) {
-      this.setState({
-        fetching: true
-      });
-      this.getArticles().then(()=> this.setState({
-        fetching: false
-      }));
-    }
-  }
-
-  getArticles(qty) {
-
-    const url = `${this.articleUrl}${qty ? `&qty=${qty}` : ''}`;
-
-    return fetch(url, {
-      method: 'get'
-    }).then((response) => {
-      response.json().then((data) => {
-        this.setState({
-          articles: data
-        });
-      })
-    }).catch((error) => {
-      console.warn('deliver articles error', error);
-    });
-
-  }
-
-  toggleMore() {
-    if (this.state.articles.length <= 3) {
-      this.getArticles(this.articleUrl, 20);
-    }
-    this.setState((previousState) => {
-      return {
-        more: !previousState.more
-      };
-    });
-  };
-
-  handleClickExpand() {
-    this.setState((previousState) => {
-      return {
-        expanded: !previousState.expanded
-      };
-    });
-  }
-
-  render() {
-
-    const { articles, more, expanded, fetching } = this.state;
-
-    if (articles.length === 0) return null;
-
-    const toggleButton = fetching ? 'refresh' : (expanded ? 'chevron-up' : 'chevron-down');
-    const style = expanded ? null : { borderBottom: '1px solid #CCC' };
-
-    return(
-      <section>
-        <Row style={style}>
-          <Col xs={12} className="source-title">
-            <h3>
-              {this.props.name}{' '}
-              <Glyphicon glyph={toggleButton} className="pull-right clickable" onClick={::this.handleClickExpand} />
-            </h3>
-          </Col>
-          {expanded && <ArticleList name={this.props.name} articles={articles} more={more} expanded={expanded}
-                                    toggleMore={this.toggleMore} />}
-        </Row>
-      </section>
-    );
-
-  }
+  return(
+    <section>
+      <Row style={style}>
+        <Col xs={12} className="source-title">
+          <h3>
+            {name}{' '}
+            <Glyphicon glyph={toggleButton} className="pull-right clickable" onClick={() => toggleExpanded(id)} />
+          </h3>
+        </Col>
+        {expanded && <ArticleList name={name} articles={articles} more={more} toggleMore={() => toggleMore(id)} />}
+      </Row>
+    </section>
+  );
 
 }
+
+
+const mapStateToProps = ({ feed }, { id }) => {
+  const { expanded, more, articles, fetching } = feed.find(s => s.id === id);
+  return {
+    expanded,
+    more,
+    articles,
+    fetching
+  }
+};
+
+const dispatchProps = {
+  toggleMore,
+  toggleExpanded
+}
+
+export default connect(mapStateToProps, dispatchProps)(NewsSource);
