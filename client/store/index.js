@@ -12,7 +12,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
   feed,
   compose(
-    applyMiddleware(sagaMiddleware, createLogger()),
+    __PRODUCTION__ ? applyMiddleware(sagaMiddleware) : applyMiddleware(sagaMiddleware, createLogger()),
     !__PRODUCTION__ && window.devToolsExtension ? window.devToolsExtension() : f => f
   )
 );
