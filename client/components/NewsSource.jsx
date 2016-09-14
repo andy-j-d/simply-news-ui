@@ -25,7 +25,7 @@ const NewsSource = ({ more, expanded, name, id, toggleMore, toggleExpanded, arti
         <Col xs={12} className="source-title">
           <h3>
             {name}{' '}
-            <Glyphicon glyph={toggleButton} className="pull-right clickable" onClick={() => toggleExpanded(id)} />
+            <Glyphicon glyph={toggleButton} className="pull-right clickable icon" onClick={() => toggleExpanded(id)} />
           </h3>
         </Col>
         {expanded && <ArticleList name={name} articles={articles} more={more} toggleMore={() => toggleMore(id)} />}

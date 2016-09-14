@@ -30,7 +30,8 @@ const Layout = ({ children, requestAllArticles, routes }) => (
         <h2>
           {routes[1].pageTitle}{' '}
           <span className="pull-right refresh-button">
-            <Glyphicon glyph="refresh" onClick={requestAllArticles} />
+            {routes[1].pageTitle === 'News Feed' &&
+            <Glyphicon glyph="refresh" className="clickable icon" onClick={requestAllArticles} />}
           </span>
         </h2>
       </Col>
