@@ -12,11 +12,11 @@ import { apiURL } from '../util';
 
 import '../styles/animations.css';
 
-const NewsSource = ({ more, expanded, name, id, toggleMore, toggleExpanded, articles, fetching }) => {
+const NewsSource = ({ more, expanded, name, id, toggleMore, toggleExpanded, articles, loading }) => {
 
   if (articles.length === 0) return null;
 
-  const toggleButton = fetching ? 'refresh' : (expanded ? 'chevron-up' : 'chevron-down');
+  const toggleButton = loading ? 'refresh' : (expanded ? 'chevron-up' : 'chevron-down');
   const style = expanded ? null : { borderBottom: '1px solid #CCC' };
 
   return(
@@ -37,12 +37,12 @@ const NewsSource = ({ more, expanded, name, id, toggleMore, toggleExpanded, arti
 
 
 const mapStateToProps = ({ feed }, { id }) => {
-  const { expanded, more, articles, fetching } = feed.find(s => s.id === id);
+  const { expanded, more, articles, loading } = feed.find(s => s.id === id);
   return {
     expanded,
     more,
     articles,
-    fetching
+    loading
   }
 };
 

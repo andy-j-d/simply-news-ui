@@ -10,12 +10,17 @@ const sortByName = array => array.sort((a, b) => {
   return 0;
 });
 
-const toggleAttribute = (array, id, attribute) => array.map(source => source.id === id ? {
+const addDefaults = feed => feed.map(source => ({
+  ...source,
+  loading: false
+}));
+
+const toggleAttribute = (array, id, attribute, value) => array.map(source => source.id === id ? {
     ...source,
-    [attribute]: !source[attribute]
+    [attribute]: value || !source[attribute]
   } : source);
 
-const feed = (state = sortByName(feedData), { type, id, status, articles }) => {
+const feed = (state = addDefaults(sortByName(feedData)), { type, id, status, articles, message }) => {
 
   switch (type) {
 
@@ -29,9 +34,21 @@ const feed = (state = sortByName(feedData), { type, id, status, articles }) => {
       if (status === 'success') {
         return state.map(source => source.id === id ? {
           ...source,
-          articles
+          articles,
+          loading: false,
+          error: null
         } : source);
-      } 
+      }
+      if (status === 'request') {
+        return toggleAttribute(state, id, 'loading', true);
+      }
+      if (status === 'failure') {
+        return state.map(source => source.id === id ? {
+          ...source,
+          loading: false,
+          error: message
+        }: source);
+      }
 
     default: return state;
     

@@ -7,11 +7,12 @@ export const GET_ARTICLES_REQUESTED = 'GET_ARTICLES_REQUESTED';
 export const GET_ALL_ARTICLES_REQUESTED = 'GET_ALL_ARTICLES_REQUESTED';
 
 function* getArticles({ payload, id }) {
+  yield put({ type: GET_ARTICLES, id, status: 'request' });
   try {
     const articles = yield call(getArticlesRequest, payload);
     yield put({ type: GET_ARTICLES, articles, id, status: 'success' });
   } catch (e) {
-    yield put({ type: GET_ARTICLES, message: e.message, status: 'failure' });
+    yield put({ type: GET_ARTICLES, message: e.message, status: 'failure', error: e });
   }
 }
 
