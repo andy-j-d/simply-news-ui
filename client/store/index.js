@@ -1,4 +1,6 @@
-import { createStore, applyMiddleware } from 'redux'
+/* global __PRODUCTION__ */
+
+import { createStore, applyMiddleware, compose } from 'redux'
 import createLogger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga'
 
@@ -9,7 +11,10 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   feed,
-  applyMiddleware(sagaMiddleware, createLogger())
+  compose(
+    applyMiddleware(sagaMiddleware, createLogger()),
+    !__PRODUCTION__ && window.devToolsExtension ? window.devToolsExtension() : f => f
+  )
 );
 
 sagaMiddleware.run(rootSaga);
