@@ -7,7 +7,7 @@
     "start": "node index",
     "test": "jest",
     "coverage": "jest --coverage",
-    "dist": "NODE_ENV=production webpack -p --progress",
+    "dist": "NODE_ENV=production webpack -p --progress --optimize-minimize --optimize-dedupe",
     "postinstall": "npm run dist"
   },
   "repository": {
