@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { feed as feedData } from '../data';
-import { TOGGLE_EXPANDED, TOGGLE_MORE } from '../actions';
+import { TOGGLE_EXPANDED, TOGGLE_MORE, TOGGLE_THEME } from '../actions';
 import { GET_ARTICLES } from '../sagas';
 
 const sortByName = array => array.sort((a, b) => {
@@ -56,4 +56,11 @@ const feed = (state = addDefaults(sortByName(feedData)), { type, id, status, art
 
 };
 
-export default combineReducers({ feed });
+const theme = (state = 'light', { type }) => {
+  if (type === TOGGLE_THEME) {
+    return state === 'light' ? 'dark' : 'light';
+  }
+  return state;
+}
+
+export default combineReducers({ feed, theme });

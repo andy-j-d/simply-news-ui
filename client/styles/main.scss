@@ -30,7 +30,7 @@ a:hover {
   text-decoration: none;
 }
 .content-container {
-  margin-top: 94px;
+  margin-top: 92px;
 }
 header, footer {
   color: $off-white;
@@ -50,7 +50,7 @@ header, footer {
   .navbar-brand {
     font-size: 2em;
   }
-  .navbar-brand:hover, .navbar-nav li a:hover, .navbar-nav > .active > a, .navbar-nav > .active > a:focus {
+  .navbar-brand:hover, .navbar-nav li a:hover, .navbar-nav > .active > a, .navbar-nav > li > a:focus {
     background: $darkblue;
     color: #CCC;
     outline: none;

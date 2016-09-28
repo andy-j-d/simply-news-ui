@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import { connect } from 'react-redux';
 
@@ -6,12 +6,14 @@ import { Grid, Row, Col, Navbar, Nav, NavItem, Glyphicon } from 'react-bootstrap
 
 import { Link, browserHistory } from 'react-router';
 
-import { requestAllArticles } from '../actions';
+import { requestAllArticles, toggleTheme } from '../actions';
+
+import { capitalizeFirstLetter } from '../util';
 
 const onClickLink = link => browserHistory.push(link);
 
-const Layout = ({ children, requestAllArticles, routes }) => (
-  <div>
+const Layout = ({ children, requestAllArticles, routes, toggleTheme, theme }) => (
+  <div className={theme}>
     <Navbar fixedTop fluid>
       <Navbar.Header>
         <Navbar.Brand onClick={() => onClickLink('/')}>
@@ -21,6 +23,9 @@ const Layout = ({ children, requestAllArticles, routes }) => (
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav pullRight>
+          <NavItem onClick={toggleTheme}>
+            {theme === 'light' ? 'Dark' : 'Light'} Theme
+          </NavItem>
           <NavItem onClick={() => onClickLink('/about')}>About</NavItem>
         </Nav>
       </Navbar.Collapse>
@@ -42,4 +47,13 @@ const Layout = ({ children, requestAllArticles, routes }) => (
   </div>
 );
 
-export default connect(null, { requestAllArticles })(Layout);
+const mapStateToProps = ({ theme }) => ({ theme });
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  requestAllArticles: PropTypes.func.isRequired,
+  routes: PropTypes.node.isRequired,
+  theme: PropTypes.string.isRequired,
+};
+
+export default connect(mapStateToProps, { requestAllArticles, toggleTheme })(Layout);

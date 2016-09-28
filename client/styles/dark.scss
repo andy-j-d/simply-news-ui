@@ -1,0 +1,22 @@
+.dark {
+  background: black;
+  color: white;
+  .source-title {
+    background: #111;
+  }
+  a {
+    color: #A8CEDD;
+  }
+  a:hover {
+    color: #96ACBB;
+  }
+  .article-list article {
+    border-color: #222;
+  }
+  .page-title {
+    background: #222;
+  }
+  .jumbotron {
+    background: black;
+  }
+}

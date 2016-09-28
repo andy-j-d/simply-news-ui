@@ -6,6 +6,8 @@ import store from '../store';
 
 import '../styles/main.scss';
 
+import '../styles/dark.scss';
+
 import Routes from '../Routes';
 
 export default class App extends Component {
