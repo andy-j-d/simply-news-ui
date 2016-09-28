@@ -35,6 +35,9 @@ a:hover {
 header, footer {
   color: $off-white;
 }
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus  {
+  background: transparent;
+}
 .navbar {
   background: $darkblue;
   .navbar-brand, .navbar-brand:focus, .navbar-nav li a, a {

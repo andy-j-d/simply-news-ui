@@ -1,17 +1,20 @@
 .dark {
   background: black;
   color: white;
+  .navbar, .navbar-brand:hover, .navbar-nav li a:hover, .navbar-nav > .active > a, .navbar-nav > li > a:focus {
+    background: black;
+  }
   .source-title {
-    background: #111;
+    background: #2C3E50;
   }
   a {
-    color: #A8CEDD;
+    color: #CCC;
   }
   a:hover {
-    color: #96ACBB;
+    color: #AAA;
   }
   .article-list article {
-    border-color: #222;
+    border-color: #333;
   }
   .page-title {
     background: #222;

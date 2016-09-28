@@ -35,8 +35,12 @@ const Layout = ({ children, requestAllArticles, routes, toggleTheme, theme }) =>
         <h2>
           {routes[1].pageTitle}{' '}
           <span className="pull-right refresh-button">
-            {routes[1].pageTitle === 'News Feed' &&
-            <Glyphicon glyph="refresh" className="clickable icon" onClick={requestAllArticles} />}
+            {routes[1].pageTitle === 'News Feed' && [
+              <Glyphicon 
+                glyph="adjust" className="clickable icon" onClick={toggleTheme} key={1} style={{ marginRight: 15 }}
+              />,
+              <Glyphicon glyph="refresh" className="clickable icon" onClick={requestAllArticles} key={2} />,
+            ]}
           </span>
         </h2>
       </Col>
@@ -50,9 +54,9 @@ const Layout = ({ children, requestAllArticles, routes, toggleTheme, theme }) =>
 const mapStateToProps = ({ theme }) => ({ theme });
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.any.isRequired,
   requestAllArticles: PropTypes.func.isRequired,
-  routes: PropTypes.node.isRequired,
+  routes: PropTypes.any.isRequired,
   theme: PropTypes.string.isRequired,
 };
 
